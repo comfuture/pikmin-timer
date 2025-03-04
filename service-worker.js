@@ -1,3 +1,30 @@
+importScripts('https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js');
+importScripts('https://www.gstatic.com/firebasejs/10.13.2/firebase-messaging-compat.js');
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAf784SLE9SP8rgmBOvPY1Y7nW_GMwMNAw",
+    authDomain: "cube-timer-927ef.firebaseapp.com",
+    projectId: "cube-timer-927ef",
+    storageBucket: "cube-timer-927ef.firebasestorage.app",
+    messagingSenderId: "648110249193",
+    appId: "1:648110249193:web:9dc39ebab6af56dfce0c78",
+    measurementId: "G-JZD388FHEZ"
+};
+
+const fb = firebase.initializeApp(firebaseConfig);
+const messaging = firebase.messaging();
+
+messaging.onBackgroundMessage((payload) => {
+    console.log('Received background message ', payload);
+    const notificationTitle = payload.notification.title;
+    const notificationOptions = {
+        body: payload.notification.body,
+        icon: payload.notification.icon
+    };
+
+    return self.registration.showNotification(notificationTitle, notificationOptions);
+});
+
 const CACHE_NAME = 'pikmin-bloom-timer-v1';
 const ASSETS = [
     '/',
