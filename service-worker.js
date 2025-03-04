@@ -14,7 +14,7 @@ const firebaseConfig = {
 const fb = firebase.initializeApp(firebaseConfig);
 const messaging = firebase.messaging();
 let token = null;
-firebase.getToken(messaging, { vapidKey: 'BAK5VZaNTmajMt_ob4UO1JKcVm6yhhNZvWDZ1OiNkfS8lE2yaomrhnOue9sQgbMKdGk3e_oVUM3cr_-8vfMZXSI' })
+messaging.getToken(messaging, { vapidKey: 'BAK5VZaNTmajMt_ob4UO1JKcVm6yhhNZvWDZ1OiNkfS8lE2yaomrhnOue9sQgbMKdGk3e_oVUM3cr_-8vfMZXSI' })
     .then((currentToken) => {
         if (currentToken) {
             console.log('Token:', currentToken);
