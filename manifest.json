@@ -1,0 +1,21 @@
+{
+  "name": "피크민블룸 버섯 타이머",
+  "short_name": "버섯 타이머",
+  "description": "피크민블룸 게임의 버섯 재생성 시간을 계산하는 타이머 앱",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#28a745",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png", 
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
