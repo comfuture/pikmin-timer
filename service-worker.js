@@ -43,7 +43,8 @@ const ASSETS = [
     '/index.html',
     '/styles.css',
     '/app.js',
-    '/mushroom-icon.png',
+    '/icon-192.png',
+    '/icon-512.png',
     '/manifest.json'
 ];
 
@@ -128,7 +129,7 @@ function scheduleNotification(timer) {
 function showNotification(timer) {
     self.registration.showNotification('피크민블룸 버섯 타이머', {
         body: '버섯이 재생성되었습니다!',
-        icon: 'mushroom-icon.png',
+        icon: 'icon-192.png',
         vibrate: [100, 50, 100],
         data: {
             timerId: timer.id,
