@@ -203,7 +203,7 @@ function updateTimers(): void {
 
     if (remaining === 0 && timer.remaining > 0) {
       // 타이머 종료 시 알림
-      showNotification(timer);
+      // showNotification(timer);
       needSave = true;
     }
 
