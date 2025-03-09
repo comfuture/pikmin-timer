@@ -24,7 +24,7 @@ messaging.getToken(messaging, { vapidKey: 'BAK5VZaNTmajMt_ob4UO1JKcVm6yhhNZvWDZ1
     .catch((err) => {
         console.log('Error getting token:', err);
     }
-);
+    );
 
 messaging.onBackgroundMessage((payload) => {
     console.log('Received background message ', payload);
@@ -84,17 +84,17 @@ let timers = [];
 // 메시지 처리
 self.addEventListener('message', event => {
     const data = event.data;
-    
+
     switch (data.action) {
         case 'ADD_TIMER':
             timers.push(data.timer);
             scheduleNotification(data.timer);
             break;
-            
+
         case 'REMOVE_TIMER':
             timers = timers.filter(timer => timer.id !== data.id);
             break;
-            
+
         case 'SYNC_TIMERS':
             timers = data.timers;
             timers.forEach(timer => scheduleNotification(timer));
@@ -106,12 +106,12 @@ self.addEventListener('message', event => {
 function scheduleNotification(timer) {
     const now = Date.now();
     const delay = timer.endTime - now;
-    
+
     if (delay <= 0) return;
-    
+
     setTimeout(() => {
         showNotification(timer);
-        
+
         // 클라이언트에 타이머 완료 알림
         self.clients.matchAll().then(clients => {
             clients.forEach(client => {
@@ -121,14 +121,14 @@ function scheduleNotification(timer) {
                 });
             });
         });
-        
+
     }, delay);
 }
 
 // 알림 표시
 function showNotification(timer) {
     self.registration.showNotification('피크민블룸 버섯 타이머', {
-        body: '버섯이 재생성되었습니다!',
+        body: '버섯이 파괴되었습니다!',
         icon: 'icon-192.png',
         vibrate: [100, 50, 100],
         data: {
@@ -152,7 +152,7 @@ function showNotification(timer) {
 // 알림 클릭 처리
 self.addEventListener('notificationclick', event => {
     event.notification.close();
-    
+
     if (event.action === 'open') {
         // 앱 열기
         event.waitUntil(
